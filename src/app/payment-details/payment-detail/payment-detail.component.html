@@ -7,7 +7,7 @@
                 </div>
             </div>
             <input name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName"
-                class="form-control" placeholder="Card Owner Name">
+                class="form-control" placeholder="Card Owner Name" required>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <input name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber"
-                class="form-control" placeholder="Card Number">
+                class="form-control" placeholder="Card Number" required>
         </div>
     </div>
     <div class="form-row">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <input name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate"
-                    class="form-control" placeholder="MM/YY">
+                    class="form-control" placeholder="MM/YY" required>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <input name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVVCVV" class="form-control"
-                    placeholder="CVV">
+                    placeholder="CVV" required>
             </div>
         </div>
     </div>
