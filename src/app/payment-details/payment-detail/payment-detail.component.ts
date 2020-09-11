@@ -9,7 +9,7 @@ import { PaymentDetailService } from 'src/app/shared/payment-detail.service';
 })
 export class PaymentDetailComponent implements OnInit {
 
-  constructor(private service: PaymentDetailService) { }
+  constructor(public service: PaymentDetailService) { }
 
   ngOnInit(): void {
   }
