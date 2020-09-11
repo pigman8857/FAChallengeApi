@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <input name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate"
-                    class="form-control" placeholder="MM/YY" required>
+                    class="form-control" placeholder="MM/YY" required maxlength="5" minlength="5">
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <input name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" class="form-control"
-                    placeholder="CVV" required>
+                    placeholder="CVV" required maxlength="3" minlength="3">
             </div>
         </div>
     </div>
