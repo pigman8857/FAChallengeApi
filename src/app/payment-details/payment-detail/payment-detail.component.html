@@ -19,7 +19,7 @@
                 </div>
             </div>
             <input name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber"
-                class="form-control" placeholder="Card Number" required>
+                class="form-control" placeholder="16 Digit Card Number" required maxlength="16" minlength="16">
         </div>
     </div>
     <div class="form-row">
