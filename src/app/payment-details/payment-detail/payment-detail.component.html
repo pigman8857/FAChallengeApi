@@ -9,6 +9,29 @@
             <input name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName"
                 class="form-control" placeholder="Card Owner Name">
         </div>
+    </div>
 
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="far fa-credit-card"></i>
+                </div>
+            </div>
+            <input name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber"
+                class="form-control" placeholder="Card Number">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+            </div>
+            <input name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate"
+                class="form-control" placeholder="Expiration Date">
+        </div>
     </div>
 </form>
