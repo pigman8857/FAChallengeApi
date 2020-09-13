@@ -7,19 +7,11 @@ import { AppComponent } from './app.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeDetailService } from './shared/employee-detail.service';
 
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
-import { PaymentDetailComponent } from './payment-details/payment-detail/payment-detail.component';
-import { PaymentDetailListComponent } from './payment-details/payment-detail-list/payment-detail-list.component';
-import { PaymentDetailService } from './shared/payment-detail.service';
-
 import { PaginationService } from './shared/pagination.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PaymentDetailsComponent,
-    PaymentDetailComponent,
-    PaymentDetailListComponent,
     EmployeeDetailsComponent
   ],
   imports: [
@@ -27,7 +19,7 @@ import { PaginationService } from './shared/pagination.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [PaymentDetailService, EmployeeDetailService, PaginationService],
+  providers: [EmployeeDetailService, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
