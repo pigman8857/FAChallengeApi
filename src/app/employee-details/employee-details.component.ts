@@ -23,16 +23,20 @@ export class EmployeeDetailsComponent implements OnInit {
     resetForm(form?: NgForm) {
         if (form != null)
             form.resetForm();
-
-        this.service.employeeName = "";
     }
 
     onSearchSubmit(form?: NgForm) {
-        this.service.getEmployeeByName(form.value.EmployeeName);
+        this.service.getEmployeeByName(this.service.employeeName);
     }
 
     onPageBtnClick(pageNumber: number) {
-        console.log('page Number', pageNumber);
+        this.service.paginationService.currentPage = pageNumber;
+        if (this.service.employeeName) {
+            this.service.getEmployeeByName(this.service.employeeName);
+        }
+        else {
+            this.service.refreshList();
+        }
     }
 
 }

@@ -24,7 +24,12 @@ export class EmployeeDetailService {
             this.http.get(`${this.rootUrl}/Employees/name/${employeeName}?pageNumber=${this.paginationService.currentPage}&pageSize=${this.paginationService.pageSize}`)
                 .toPromise()
                 .then(res => {
-                    // this.list = res as EmployeeDetail[]
+                    var temp = res as EmployeeList;
+                    this.list = temp.employeeList;
+                    this.paginationService.totalAmount = temp.actualTotalAmount;
+                    let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
+                    this.paginationService.numbers = Array(pageAmount);
+
                 });
         }
         else {
@@ -40,15 +45,12 @@ export class EmployeeDetailService {
         this.http.get(`${this.rootUrl}/Employees?pageNumber=${this.paginationService.currentPage}&pageSize=${this.paginationService.pageSize}`)
             .toPromise()
             .then(res => {
-                console.log(res);
                 var temp = res as EmployeeList;
-
                 this.list = temp.employeeList;
-
                 this.paginationService.totalAmount = temp.actualTotalAmount;
                 let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
                 this.paginationService.numbers = Array(pageAmount);
-                this.resetSearchName();
+
             });
     }
 }
