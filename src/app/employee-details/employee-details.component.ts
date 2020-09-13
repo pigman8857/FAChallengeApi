@@ -10,9 +10,12 @@ import { EmployeeDetailService } from 'src/app/shared/employee-detail.service';
 export class EmployeeDetailsComponent implements OnInit {
 
     constructor(public service: EmployeeDetailService) {
+        console.log('EmployeeDetailService', service);
+
     }
 
     ngOnInit(): void {
+
         this.resetForm();
         this.service.refreshList();
     }
@@ -26,6 +29,10 @@ export class EmployeeDetailsComponent implements OnInit {
 
     onSearchSubmit(form?: NgForm) {
         this.service.getEmployeeByName(form.value.EmployeeName);
+    }
+
+    onPageBtnClick(pageNumber: number) {
+        console.log('page Number', pageNumber);
     }
 
 }

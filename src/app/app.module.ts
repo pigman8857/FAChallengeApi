@@ -12,6 +12,7 @@ import { PaymentDetailComponent } from './payment-details/payment-detail/payment
 import { PaymentDetailListComponent } from './payment-details/payment-detail-list/payment-detail-list.component';
 import { PaymentDetailService } from './shared/payment-detail.service';
 
+import { PaginationService } from './shared/pagination.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,9 @@ import { PaymentDetailService } from './shared/payment-detail.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [PaymentDetailService, EmployeeDetailService],
+  providers: [PaymentDetailService, EmployeeDetailService, PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
