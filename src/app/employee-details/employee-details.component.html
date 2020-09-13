@@ -3,6 +3,25 @@
     <hr>
     <div class="row">
         <div class="col-md-12">
+            <form #form="ngForm" autocomplete="off" (submit)="onSearchSubmit(form)">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <input name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="service.employeeName"
+                            class="form-control" placeholder="Employee name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-lg btn-block" type="submit">
+                        Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12">
             <table class="table table-hover">
                 <td>Name</td>
                 <td>Salary</td>

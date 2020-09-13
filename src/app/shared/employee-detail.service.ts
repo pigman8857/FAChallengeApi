@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
     providedIn: 'root'
 })
 export class EmployeeDetailService {
-    formData: EmployeeDetail;
+    employeeName: string;
     readonly rootUrl = 'http://localhost:55256/api';
     list: EmployeeDetail[];
 
