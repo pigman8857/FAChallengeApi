@@ -12,19 +12,30 @@ export class EmployeeDetailService {
 
     constructor(public http: HttpClient) { }
 
-    /*
-    postPaymentDetail(formData: EmployeeDetail) {
-        return this.http.post(`${this.rootUrl}/PaymentDetails`, formData);
-    }*/
+
+    getEmployeeByName(employeeName: string) {
+        if (employeeName !== "") {
+            this.http.get(`${this.rootUrl}/Employees/name/${employeeName}`).toPromise()
+                .then(res => {
+                    this.list = res as EmployeeDetail[]
+                    this.resetSearchName();
+                });;
+        }
+        else {
+            this.refreshList();
+        }
+    }
+
+    resetSearchName() {
+        this.employeeName = "";
+    }
 
     refreshList() {
-        console.log('employee service refreshList');
         this.http.get(`${this.rootUrl}/Employees`)
             .toPromise()
             .then(res => {
-                console.log('res', res);
                 this.list = res as EmployeeDetail[]
-                console.log('list', this.list);
+                this.resetSearchName();
             });
     }
 }

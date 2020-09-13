@@ -10,11 +10,9 @@ import { EmployeeDetailService } from 'src/app/shared/employee-detail.service';
 export class EmployeeDetailsComponent implements OnInit {
 
     constructor(public service: EmployeeDetailService) {
-        console.log('EmployeeDetailService', service);
     }
 
     ngOnInit(): void {
-        console.log('employee detail component ngOnInit');
         this.resetForm();
         this.service.refreshList();
     }
@@ -27,15 +25,7 @@ export class EmployeeDetailsComponent implements OnInit {
     }
 
     onSearchSubmit(form?: NgForm) {
-        console.log('form.value', form.value.EmployeeName);
-        /*this.service.postPaymentDetail(form.value).subscribe(
-            res => {
-                this.resetForm(form);
-            },
-            err => {
-                console.log(err);
-            }
-        );*/
+        this.service.getEmployeeByName(form.value.EmployeeName);
     }
 
 }
