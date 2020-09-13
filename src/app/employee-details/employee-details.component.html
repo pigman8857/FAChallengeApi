@@ -2,11 +2,19 @@
     <h1 class="display-4 text-center">Employee Detail</h1>
     <hr>
     <div class="row">
-        <!--<div class="col-md-5">
-            <app-payment-detail></app-payment-detail>
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <td>Name</td>
+                <td>Salary</td>
+                <td>Department</td>
+                <td>Position</td>
+                <tr *ngFor="let em of service.list">
+                    <td>{{ em.name }}</td>
+                    <td>{{ em.salary }}</td>
+                    <td>{{ em.department.name }}</td>
+                    <td>{{ em.position.name }}</td>
+                </tr>
+            </table>
         </div>
-        <div class="col-md-7">
-            <app-payment-detail-list></app-payment-detail-list>
-        </div>-->
     </div>
 </div>

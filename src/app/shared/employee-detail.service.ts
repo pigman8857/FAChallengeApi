@@ -18,8 +18,13 @@ export class EmployeeDetailService {
     }*/
 
     refreshList() {
+        console.log('employee service refreshList');
         this.http.get(`${this.rootUrl}/Employees`)
             .toPromise()
-            .then(res => this.list = res as EmployeeDetail[]);
+            .then(res => {
+                console.log('res', res);
+                this.list = res as EmployeeDetail[]
+                console.log('list', this.list);
+            });
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+//import { NgForm } from '@angular/forms';
 import { EmployeeDetailService } from 'src/app/shared/employee-detail.service';
 
 @Component({
@@ -14,6 +14,8 @@ export class EmployeeDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('employee detail component ngOnInit');
+        this.service.refreshList();
     }
 
 }
