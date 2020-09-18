@@ -41,6 +41,19 @@ export class EmployeeDetailService {
         this.employeeName = "";
     }
 
+    loadMore() {
+        this.http.get(`${this.rootUrl}/Employees?pageNumber=${this.paginationService.currentPage}&pageSize=${this.paginationService.pageSize}`)
+            .toPromise()
+            .then(res => {
+                var temp = res as EmployeeList;
+                this.list.push(...temp.employeeList);
+                this.paginationService.totalAmount = temp.actualTotalAmount;
+                let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
+                this.paginationService.numbers = Array(pageAmount);
+
+            });
+    }
+
     refreshList() {
         this.http.get(`${this.rootUrl}/Employees?pageNumber=${this.paginationService.currentPage}&pageSize=${this.paginationService.pageSize}`)
             .toPromise()

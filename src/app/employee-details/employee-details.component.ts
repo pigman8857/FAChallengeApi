@@ -10,14 +10,31 @@ import { EmployeeDetailService } from 'src/app/shared/employee-detail.service';
 export class EmployeeDetailsComponent implements OnInit {
 
     constructor(public service: EmployeeDetailService) {
-        console.log('EmployeeDetailService', service);
-
+        console.log('service', service);
     }
 
     ngOnInit(): void {
-
         this.resetForm();
         this.service.refreshList();
+
+        let scrollableContent = document.getElementsByClassName('scrollableContent');
+        scrollableContent[0].scrollTop = 0;
+
+    }
+
+
+    scrollEvent(event) {
+
+        let scrollTop = event.srcElement.scrollTop;
+
+        let scrollHeight = event.srcElement.scrollHeight;
+        let clientHeight = event.srcElement.clientHeight;
+        let scrollTopMax = scrollHeight - clientHeight;
+
+        if (scrollTop == scrollTopMax) {
+            this.service.paginationService.currentPage += 1;
+            this.service.loadMore();
+        }
     }
 
     resetForm(form?: NgForm) {
@@ -39,4 +56,7 @@ export class EmployeeDetailsComponent implements OnInit {
         }
     }
 
+    onTableScroll(e) {
+        console.log('scroll', e);
+    }
 }

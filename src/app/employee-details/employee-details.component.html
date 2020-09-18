@@ -41,6 +41,11 @@
                 <td>Salary</td>
                 <td>Department</td>
                 <td>Position</td>
+            </table>
+        </div>
+        <div class="col-md-12 scrollableContent" style="overflow-y: scroll; height:400px;"
+            (scroll)="scrollEvent($event)">
+            <table class="table table-hover">
                 <tr *ngFor="let em of service.list">
                     <td>{{ em.name }}</td>
                     <td>{{ em.salary }}</td>
