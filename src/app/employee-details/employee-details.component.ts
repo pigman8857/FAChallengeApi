@@ -32,30 +32,40 @@ export class EmployeeDetailsComponent implements OnInit {
         let scrollTopMax = scrollHeight - clientHeight;
 
         if (scrollTop == scrollTopMax) {
+
+            //load when no search
             if (this.service.paginationService.currentPage < this.service.paginationService.totalAmountOfPages) {
-                this.service.paginationService.currentPage += 1;
-                this.service.loadMore();
+                console.log('employee name for searh', this.service.employeeName);
+                if (this.service.employeeName) {
+                    console.log('load more with name ');
+                    this.service.paginationService.currentPage += 1;
+                    this.service.loadMoreByName(this.service.employeeName);
+                }
+                else {
+                    console.log('load more ');
+                    this.service.paginationService.currentPage += 1;
+                    this.service.loadMore();
+                }
             }
+
         }
     }
 
     resetForm(form?: NgForm) {
-        if (form != null)
+        if (form != null) {
             form.resetForm();
+            this.service.paginationService.currentPage = 1;
+            this.service.list = [];
+            this.service.refreshList();
+            let scrollableContent = document.getElementsByClassName('scrollableContent');
+            scrollableContent[0].scrollTop = 0;
+        }
     }
 
     onSearchSubmit(form?: NgForm) {
+        this.service.list = [];
+        this.service.paginationService.currentPage = 1;
         this.service.getEmployeeByName(this.service.employeeName);
-    }
-
-    onPageBtnClick(pageNumber: number) {
-        this.service.paginationService.currentPage = pageNumber;
-        if (this.service.employeeName) {
-            this.service.getEmployeeByName(this.service.employeeName);
-        }
-        else {
-            this.service.refreshList();
-        }
     }
 
     onTableScroll(e) {

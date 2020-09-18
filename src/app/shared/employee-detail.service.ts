@@ -25,10 +25,11 @@ export class EmployeeDetailService {
                 .toPromise()
                 .then(res => {
                     var temp = res as EmployeeList;
-                    this.list = temp.employeeList;
+                    this.list.push(...temp.employeeList);
                     this.paginationService.totalAmount = temp.actualTotalAmount;
                     let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
-                    this.paginationService.numbers = Array(pageAmount);
+                    this.paginationService.totalAmountOfPages = pageAmount;
+
 
                 });
         }
@@ -41,6 +42,10 @@ export class EmployeeDetailService {
         this.employeeName = "";
     }
 
+    loadMoreByName(employeeName) {
+        this.getEmployeeByName(employeeName);
+    }
+
     loadMore() {
         this.http.get(`${this.rootUrl}/Employees?pageNumber=${this.paginationService.currentPage}&pageSize=${this.paginationService.pageSize}`)
             .toPromise()
@@ -49,9 +54,9 @@ export class EmployeeDetailService {
                 this.list.push(...temp.employeeList);
                 this.paginationService.totalAmount = temp.actualTotalAmount;
                 let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
-                console.log('pageAmount', pageAmount);
+
                 this.paginationService.totalAmountOfPages = pageAmount;
-                this.paginationService.numbers = Array(pageAmount);
+
 
             });
     }
@@ -64,9 +69,9 @@ export class EmployeeDetailService {
                 this.list = temp.employeeList;
                 this.paginationService.totalAmount = temp.actualTotalAmount;
                 let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
-                console.log('pageAmount', pageAmount);
+
                 this.paginationService.totalAmountOfPages = pageAmount;
-                this.paginationService.numbers = Array(pageAmount);
+
 
             });
     }
