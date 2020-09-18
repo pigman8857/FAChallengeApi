@@ -11,6 +11,7 @@ export class PaginationService {
     readonly pageSize: number = 20;
     numbers: number[];
     totalAmount: number = 0;
+    totalAmountOfPages: number = 0;
     constructor() {
 
     }

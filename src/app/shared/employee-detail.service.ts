@@ -27,7 +27,7 @@ export class EmployeeDetailService {
                     var temp = res as EmployeeList;
                     this.list = temp.employeeList;
                     this.paginationService.totalAmount = temp.actualTotalAmount;
-                    let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
+                    let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
                     this.paginationService.numbers = Array(pageAmount);
 
                 });
@@ -48,7 +48,9 @@ export class EmployeeDetailService {
                 var temp = res as EmployeeList;
                 this.list.push(...temp.employeeList);
                 this.paginationService.totalAmount = temp.actualTotalAmount;
-                let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
+                let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
+                console.log('pageAmount', pageAmount);
+                this.paginationService.totalAmountOfPages = pageAmount;
                 this.paginationService.numbers = Array(pageAmount);
 
             });
@@ -61,7 +63,9 @@ export class EmployeeDetailService {
                 var temp = res as EmployeeList;
                 this.list = temp.employeeList;
                 this.paginationService.totalAmount = temp.actualTotalAmount;
-                let pageAmount = Math.floor(this.paginationService.totalAmount / this.paginationService.pageSize);
+                let pageAmount = Math.ceil(this.paginationService.totalAmount / this.paginationService.pageSize);
+                console.log('pageAmount', pageAmount);
+                this.paginationService.totalAmountOfPages = pageAmount;
                 this.paginationService.numbers = Array(pageAmount);
 
             });

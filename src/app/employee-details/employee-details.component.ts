@@ -32,8 +32,10 @@ export class EmployeeDetailsComponent implements OnInit {
         let scrollTopMax = scrollHeight - clientHeight;
 
         if (scrollTop == scrollTopMax) {
-            this.service.paginationService.currentPage += 1;
-            this.service.loadMore();
+            if (this.service.paginationService.currentPage < this.service.paginationService.totalAmountOfPages) {
+                this.service.paginationService.currentPage += 1;
+                this.service.loadMore();
+            }
         }
     }
 
