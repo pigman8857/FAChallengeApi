@@ -15,6 +15,7 @@ export class EmployeeDetailService {
     employeeName: string;
     readonly rootUrl = 'http://localhost:55256/api';
     list: EmployeeDetail[];
+    isSearchingByName = false;
 
     constructor(public http: HttpClient, public paginationService: PaginationService) { }
 

@@ -36,7 +36,7 @@ export class EmployeeDetailsComponent implements OnInit {
             //load when no search
             if (this.service.paginationService.currentPage < this.service.paginationService.totalAmountOfPages) {
                 console.log('employee name for searh', this.service.employeeName);
-                if (this.service.employeeName) {
+                if (this.service.employeeName && this.service.isSearchingByName) {
                     console.log('load more with name ');
                     this.service.paginationService.currentPage += 1;
                     this.service.loadMoreByName(this.service.employeeName);
@@ -53,6 +53,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
     resetForm(form?: NgForm) {
         if (form != null) {
+            this.service.isSearchingByName = false;
             form.resetForm();
             this.service.paginationService.currentPage = 1;
             this.service.list = [];
@@ -63,6 +64,7 @@ export class EmployeeDetailsComponent implements OnInit {
     }
 
     onSearchSubmit(form?: NgForm) {
+        this.service.isSearchingByName = true;
         this.service.list = [];
         this.service.paginationService.currentPage = 1;
         this.service.getEmployeeByName(this.service.employeeName);
